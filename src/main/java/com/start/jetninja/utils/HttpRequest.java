@@ -1,18 +1,14 @@
-package com.start.jetninja.helper;
+package com.start.jetninja.utils;
 
 import okhttp3.*;
-import okio.BufferedSink;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
+import org.springframework.stereotype.Component;
 import java.io.IOException;
 
+@Component
 public class HttpRequest {
-
-    private HttpRequest(){}
     private static final OkHttpClient client = new OkHttpClient();
 
-    public static Response getRequest(String url) throws  IOException{
+    public Response getRequest(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -22,20 +18,24 @@ public class HttpRequest {
 
             return response;
         }
-        
+
     }
-    public static Response postRequest(String url, MediaType mediaType) throws  IOException{
-        String postBody = "";
+    public Response postRequest(String url, String cookie) throws  IOException{
+        RequestBody body = new FormBody.Builder()
+                .add("email", "terah14907@in2reach.com")
+                .build();
 
         Request request = new Request.Builder()
-                .url("https://api.github.com/markdown/raw")
-                .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, postBody))
+                .url(url)
+                .header("Cookie", cookie)
+                .post(body)
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
-            System.out.println(response.body().string());
+//            System.out.println(response.body());
+            return response;
         }
 
 
