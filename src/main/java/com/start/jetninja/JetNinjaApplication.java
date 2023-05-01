@@ -1,7 +1,6 @@
 package com.start.jetninja;
 
 import com.start.jetninja.helper.CookieScraper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,7 +10,14 @@ public class JetNinjaApplication {
     private static CookieScraper  cookieScraper;
     public static void main(String[] args) throws Exception {
         SpringApplication.run(JetNinjaApplication.class, args);
-        cookieScraper.run();
+
+        CookieScraper cookieScraper = new CookieScraper();
+        String cookie = cookieScraper.getCookie("https://account.jetbrains.com/signup");
+        System.out.println(cookie);
+
+
+
+
     }
 
 }
