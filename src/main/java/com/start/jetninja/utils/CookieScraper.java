@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-
 /**
  * This class provides a utility for extracting cookies from HTTP responses using OkHttp client library.
  */
@@ -18,8 +17,6 @@ public class CookieScraper {
         this.httpRequest = httpRequest;
         this.cookieExtractor = cookieExtractor;
     }
-
-
 
     /**
      * Makes an HTTP request to the given URL and extracts the cookie value from the response.
