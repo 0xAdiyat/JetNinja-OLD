@@ -65,8 +65,14 @@ public class GetAccount implements CommandLineRunner {
                 }
 
                 System.out.println(text);
+                String signUpCompleteBody = httpRequest.getRequestWBodyJBSign(text);
+                Pattern pattern2 = Pattern.compile("action=\"([^\"]+)\"");
+                Matcher matcher2 = pattern2.matcher(signUpCompleteBody);
 
-
+                if (matcher2.find()) {
+                    String url2 = matcher2.group(1);
+                    System.out.println(url2);
+                }
 
 
             }

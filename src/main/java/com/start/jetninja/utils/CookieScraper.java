@@ -17,7 +17,6 @@ public class CookieScraper {
         this.httpRequest = httpRequest;
         this.cookieExtractor = cookieExtractor;
     }
-
     /**
      * Makes an HTTP request to the given URL and extracts the cookie value from the response.
      *
